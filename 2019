@@ -1,0 +1,325 @@
+library(tidyverse)
+informacion <- read_csv("database_case.csv")
+
+filtragem_1 <- informacion%>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio == "Grande porte", informacion$tipo_plano == "Enterprise")
+
+
+filtragem_2 <- informacion%>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio == "Médio porte", informacion$tipo_plano == "Pro")
+
+
+
+filtragem_3 <- informacion%>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio == "Médio porte", informacion$tipo_plano == "Básico")
+
+
+
+filtragem_4 <- informacion%>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio == "Pequeno porte", informacion$tipo_plano == "Pro")
+
+
+filtragem_5 <- informacion%>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio == "Pequeno porte", informacion$tipo_plano == "Básico")
+
+write.csv(filtragem_1, "filtro1.csv", row.names = FALSE)
+write.csv(filtragem_2, "filtro2.csv", row.names = FALSE)
+write.csv(filtragem_3, "filtro3.csv", row.names = FALSE)
+write.csv(filtragem_4, "filtro4.csv", row.names = FALSE)
+write.csv(filtragem_5, "filtro5.csv", row.names = FALSE)
+
+
+filtragem_1 <- informacion%>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio == "Grande porte", informacion$tipo_plano == "Enterprise")
+
+library(ggplot2)
+1 <- "Grande Porte" 
+porte <- informacion %>%
+  filter (informacion$tipo_plano == 1)
+
+porte %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = G))
+
+informacion %>%
+  filter(informacion$comprou == TRUE) %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = tamanho_negocio))
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Grande porte") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = tipo_plano))+
+  xlab("tipo_plano")+
+  ylab("Numero de assinantes")+
+  ggtitle("Grande porte")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Pequeno porte") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = tipo_plano))+
+  xlab("tipo_plano")+
+  ylab("Numero de assinantes")+
+  ggtitle("Pequeno porte")
+
+informacion %>%
+  filter(informacion$tamanho_negocio == "Grande porte")%>%
+  ggplot()+
+  geom_bar(mapping = aes(x = data_ganho), bins = 4)+
+  xlab("tipo_plano")+
+  ylab("Numero de assinantes")+
+  ggtitle("Pequeno porte")
+
+summary(df)
+summary(informacion)
+informacion$tipo_plano <- as.factor(informacion$tipo_plano)
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Médio porte") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = segmento_mercado))+
+  xlab("segmento de mercado")+
+  ylab("Numero de assinantes")+
+  ggtitle("Médio porte")
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Grande porte" ) %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = estado))+
+  xlab("estado")+
+  ylab("Numero de assinantes")+
+  ggtitle("Pequeno porte")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Médio porte") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = estado))+
+  xlab("estado")+
+  ylab("Numero de assinantes")+
+  ggtitle("Médio porte")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Pequeno porte") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = estado))+
+  xlab("estado")+
+  ylab("Numero de assinantes")+
+  ggtitle("Pequeno porte")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Grande porte") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = estado))+
+  xlab("estado")+
+  ylab("Numero de assinantes")+
+  ggtitle("Pequeno porte")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano == "Enterprise") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = segmento_mercado))+
+  xlab("estado")+
+  ylab("Numero de assinantes")+
+  ggtitle("Grande porte")
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano == "Enterprise") %>%
+  ggplot(mapping = aes(x = data_primeiro_contato))+
+  geom_histogram(aes(y = ..density..),bins = 365)+
+  geom_density()+
+  xlab("Mês")+
+  ylab("Assinantes")+
+  ggtitle("Plano Enterprise, data primeiro contato")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano == "Enterprise") %>%
+  ggplot(mapping = aes(x = data_ganho))+
+  geom_histogram(aes(y = ..density..),bins = 365)+
+  geom_density()+
+  xlab("Mês")+
+  ylab("Assinantes")+
+  ggtitle("Plano Enterprise,Grande porte, data ganho")
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano == "Pro", informacion$tamanho_negocio == "Pequeno porte") %>%
+  ggplot(mapping = aes(x = data_ganho))+
+  geom_histogram(aes(y = ..density..),bins = 365)+
+  geom_density()+
+  xlab("Mês")+
+  ylab("Assinantes")+
+  ggtitle("Plano Pro, Pequeno porte, data ganho")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano == "Básico", informacion$tamanho_negocio == "Médio porte") %>%
+  ggplot(map = aes(x= data_ganho))+
+  geom_histogram(aes(x= data_ganho),bins = 4, fill = "red")+
+  geom_histogram(aes(x= data_primeiro_contato),bins = 4)+
+  xlab("Mês")+
+  ylab("Assinantes")+
+  ggtitle("Plano Básico, Médio porte, data ganho")
+
+df <- informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano == "Pro", informacion$tamanho_negocio == "Médio porte")
+  
+cor(df$cliques_facebookads, df$impressao_facebookads)
+
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$segmento_mercado == "Turismo", informacion$tamanho_negocio == "Grande porte") %>%
+  ggplot(mapping = aes(x = tipo_negocio))+
+  geom_bar(fill = "red")+
+  xlab("Tipo de negocio")+
+  ylab("Numero de assinantes")+
+  ggtitle("Grande porte, Turismo, Comprou")
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$segmento_mercado == "Transporte", informacion$tipo_plano == "Pro") %>%
+  ggplot(mapping = aes(x = tipo_negocio))+
+  geom_bar(fill = "red")+
+  xlab("Tipo de negocio")+
+  ylab("Numero de assinantes")+
+  ggtitle("Transporte, Comprou, Pro")
+
+
+abs <- informacion %>%
+  filter(informacion$comprou == TRUE, informacion$segmento_mercado == "Transporte")
+
+summary(abs)  
+
+#Resumo da base
+filtragem_summary <- summary(informacion)
+
+#Filtrar so os provaveis (status_id = 7)
+abs_filtrada <- filter(abs, abs$tipo_negocio == "Grande porte")
+
+#Resumo da base
+summary(scouts_filtrada)
+
+write.csv(filtragem_summary, "abs.csv", row.names = FALSE)
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano == "Pro") %>%
+  summary()
+
+str(informacion)
+
+#Transformar variaveis categoricas em fatores
+informacion$sexo <- as.factor(informacion$sexo)
+informacion$estado <- as.factor(informacion$estado)
+informacion$tamanho_negocio <- as.factor(informacion$tamanho_negocio)
+informacion$classificacao_lead <- as.factor(informacion$classificacao_lead)
+informacion$tipo_plano <- as.factor(informacion$tipo_plano)
+informacion$segmento_mercado <- as.factor(informacion$segmento_mercado)
+informacion$tipo_negocio <- as.factor(informacion$tipo_negocio)
+informacion$perfil_lead <- as.factor(informacion$perfil_lead)
+informacion$data_primeiro_contato <- as.factor(informacion$data_primeiro_contato)
+informacion$data_ganho <- as.factor(informacion$data_ganho)
+
+colnames(informacion)
+colnames(informacion) <- c("data_ganho", "perfil_lead", "sexo",
+                  "estado", "tamanho_negocio", "classificacao_lead",
+                  "tipo_plano", "segmento_mercado", "tipo_negocio", "id_cliente", "data_primeiro_contato", "impressao_facebookads",
+                  "impressao_googleads", "impressao_linkedinads", "impressao_instagramads", "artigos_lidos", "emails_recebidos", "cliques_facebookads",
+                  "cliques_googleads", "cliques_linkedinads", "cliques_instagramads", "emails_abertos", "receita_declarada_mensal",
+                  "comprou")
+
+#Resumindo os dados por genero
+informacion%>%
+  group_by(tamanho_negocio) %>%
+  summarise(media_perfil = mean(perfil_lead),
+            media_sexo = mean(sexo),
+            media_sexo = mean(sexo))
+
+colnames(informacion)
+summary(informacion)
+ #-----------------------------------------------------
+
+#Transformar variaveis categoricas em fatores
+informacion$sexo <- as.factor(informacion$sexo)
+informacion$estado <- as.factor(informacion$estado)
+informacion$tamanho_negocio <- as.factor(informacion$tamanho_negocio)
+informacion$classificacao_lead <- as.factor(informacion$classificacao_lead)
+informacion$tipo_plano <- as.factor(informacion$tipo_plano)
+informacion$segmento_mercado <- as.factor(informacion$segmento_mercado)
+informacion$tipo_negocio <- as.factor(informacion$tipo_negocio)
+informacion$perfil_lead <- as.factor(informacion$perfil_lead)
+informacion$data_primeiro_contato <- as.factor(informacion$data_primeiro_contato)
+informacion$data_ganho <- as.factor(informacion$data_ganho)
+
+
+write.csv(filtragem_summary, "abs.csv", row.names = FALSE)
+#==============================================================
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tamanho_negocio== "Médio porte", informacion$tipo_plano == "Pro") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = segmento_mercado))+
+  xlab("segmento, ganho")+
+  ylab("Numero de assinantes")+
+  ggtitle("Pro Médio porte")  
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano== "Pro", informacion$estado == "SP", informacion$segmento_mercado == "Turismo") %>%
+  ggplot()+
+  geom_bar(mapping = aes(x = data_ganho))+
+  xlab("primeiro contato")+
+  ylab("Numero de assinantes")+
+  ggtitle("Pro Turismo") 
+
+planos <- informacion %>%
+  filter(informacion$estado=="SP", informacion$comprou==FALSE, informacion$tamanho_negocio=="Grande porte")
+summary(planos)
+
+
+summary(informacion)
+df <- informacion %>%
+  filter(informacion$comprou == FALSE, informacion$tamanho_negocio=="Grande porte", informacion$estado=="SP", informacion$classificacao_lead == "HOT")
+summary(df)
+
+write.csv(filtro_transporte, "transporte_sp_false.csv", row.names = FALSE)
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano== "Enterprise", informacion$estado == "SP", informacion$segmento_mercado == "Transporte") %>%
+  ggplot(mapping = aes(x = data_ganho))+
+  geom_histogram(aes(y = ..density..),bins = 4)+
+  geom_density()+
+  xlab("Mês")+
+  ylab("Assinantes")+
+  ggtitle("Plano Enterprise, Transporte, SP, data ganho")
+
+
+
+informacion %>%
+  filter(informacion$comprou == TRUE, informacion$tipo_plano== "Enterprise", informacion$estado == "SP", informacion$segmento_mercado == "Transporte") %>%
+  ggplot(mapping = aes(x = data_primeiro_contato))+
+  geom_histogram(aes(y = ..density..),bins = 4, fill = "red")+
+  geom_density()+
+  xlab("Mês")+
+  ylab("Assinantes")+
+  ggtitle("Plano Enterprise, Transporte, SP, data primeiro contato")
+187752+162612+157044
+
+df <- informacion %>%
+  filter(informacion$segmento_mercado == "Turismo")
+summary(df)
+55*1989+90*769
+48*1989+120*769
+40*1989+108*769
+43*1989+93*769
+df <- informacion %>%
+  filter(informacion$estado=="SP", informacion$tipo_plano=="Enterprise")
+summary(df)
+
